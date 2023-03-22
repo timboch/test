@@ -1,5 +1,5 @@
 #Timothy Bochkarev
-def encode_pass(password):
+def encode(password):
     nstring = ""
     for char in password:
         num = int(char)
@@ -16,6 +16,22 @@ def encode_pass(password):
     global encoded
     encoded = nstring
 
+def decode(encoded_pass):
+    encoded_pass = list(encoded_pass)
+    for i in encoded_pass:
+        i = int(i)
+        if i > 2:
+            i -= 3
+        elif i == 2:
+            i = 9
+        elif i == 1:
+            i = 8
+        elif i == 0:
+            i = 7
+    nstring = ''
+    for num in encoded_pass:
+        nstring += str(num)
+
 
 
 if __name__ == "__main__":
@@ -31,8 +47,8 @@ if __name__ == "__main__":
         user_input = input("Please enter an option: ")
         if user_input == '1':
             passw = input("Please enter your password to encode: ")
-            encode_pass(passw)
+            encoded_pass = encode(passw)
             print("Your password has been encoded and stored!")
             print()
         elif user_input == '2':
-            pass
+            print(f'The encoded password is {encoded_pass}, and the original password is {decode(encoded_pass)}.')
