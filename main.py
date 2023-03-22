@@ -19,21 +19,25 @@ def encode(password):
 
 def decode(encoded_pass):
     encoded_pass = list(encoded_pass)
-    for i in encoded_pass:
-        i = int(i)
-        if i > 2:
-            i -= 3
-        elif i == 2:
-            i = 9
-        elif i == 1:
-            i = 8
-        elif i == 0:
-            i = 7
-    nstring = ''
+    count = 0
     for num in encoded_pass:
-        nstring += str(num)
+        new_num = int(num)
+        encoded_pass[count] = new_num
+        count += 1
+    for i in range(len(encoded_pass)):
+        if encoded_pass[i] > 2:
+            encoded_pass[i] = encoded_pass[i] - 3
+        else:
+            if encoded_pass[i] == 2:
+                encoded[i] = 9
+            elif encoded_pass[i] == 1:
+                encoded_pass[i] = 8
+            else:
+                encoded_pass[i] = 7
+    nstring = ''
+    for value in encoded_pass:
+        nstring += str(value)
     return nstring
-
 
 
 if __name__ == "__main__":
