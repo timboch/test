@@ -5,16 +5,17 @@ def encode(password):
         num = int(char)
         if num < 7:
             num += 3
-            nstring.append(num)
+            nstring += str(num)
         else:
             if num == 7:
-                nstring.append("0")
+                nstring += str("0")
             elif num == 8:
-                nstring.append('1')
+                nstring += str("1")
             elif num == 9:
-                nstring.append('2')
+                nstring += str("2")
     global encoded
     encoded = nstring
+    return encoded
 
 def decode(encoded_pass):
     encoded_pass = list(encoded_pass)
@@ -31,6 +32,7 @@ def decode(encoded_pass):
     nstring = ''
     for num in encoded_pass:
         nstring += str(num)
+    return nstring
 
 
 
